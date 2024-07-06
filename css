@@ -1,0 +1,71 @@
+.container {
+    padding-top: 10px;
+    width: auto;
+    padding: auto;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 35px;
+    text-align: center;
+}
+
+input {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    width: 10%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+<h1>{{userForm.value | json}}</h1>
+
+
+<form #userForm="ngForm" (ngSubmit)="formSubmit()" novalidate>
+    <div class="form-group">
+        <label for="firstname">First Name </label>
+        <input type="text" class="form-control" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name">
+    </div>
+
+    <div class="form-group">
+        <label for="lastname">Last Name </label>
+        <input type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name">
+    </div>
+
+    <div class="form-group">
+        <label for="city">City </label>
+        <select class="form-control" [(ngModel)]="user.city" name="city">
+            <option selected>Choose City</option>
+            <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+        </select>
+    </div>
+    <a routerLink="userdetails">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </a>
+    
+</form>
